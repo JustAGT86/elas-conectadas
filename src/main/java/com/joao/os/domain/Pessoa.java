@@ -5,23 +5,35 @@ import java.util.Objects;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name="pessoa")
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
+	
+	@Column(name="nome")
 	private String nome;
 	
 	@CPF
+	@Column(name="cpf")
 	private String cpf;
+	
+	@Column(name="telefone")
 	private String telefone;
 
 	public Pessoa() {

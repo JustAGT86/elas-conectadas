@@ -10,4 +10,4 @@ public class OsApplication {
 		SpringApplication.run(OsApplication.class, args);
 	}
 
-}
+} 
